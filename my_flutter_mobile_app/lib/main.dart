@@ -9,8 +9,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('mEbay List'),
+          title: Text('My Ebay List'),
         ),
+        body: Card(child: Column(children: <Widget>[
+        Image.asset('assets/Xinbi.jpg'),
+          Text('Xinbi At Work')
+        ],),),
       ),
     );
   }
