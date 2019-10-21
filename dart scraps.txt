@@ -1,0 +1,51 @@
+
+"https://jsonplaceholder.typicode.com/posts"
+
+https://api.sandbox.ebay.com/buy/browse/v1/item_summary/
+
+
+new ListView.builder(
+              itemCount: data == null ? 0 : data.length),
+
+
+
+body: new ListView.builder(
+        itemCount: data == null ? 0 : data.length,
+          itemBuilder: (BuildContext context, int index) {
+          return new Card (
+            child: new Text(data[index]["title"])
+          );
+          },
+      )
+
+
+
+
+body: new Container(
+          child: new Center(
+            child: new Column(
+              children: <Widget>[
+                new TextField(
+                  decoration: new InputDecoration(
+                  hintText: "type in here"
+                  ),
+                ),
+                new Text("")
+              ]
+            )
+          )
+        )
+
+
+
+
+new TextField(
+                decoration: new InputDecoration(
+                    hintText: "type in here",
+                    
+                    onChanged: (String str) {
+                      setState(() {
+                        result = str;
+                      });
+                    }),
+              )
