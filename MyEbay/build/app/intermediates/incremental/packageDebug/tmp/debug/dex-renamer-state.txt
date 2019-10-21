@@ -1,0 +1,4 @@
+#Sun Oct 20 18:26:08 PDT 2019
+base.0=C\:\\Users\\katyl\\Workspace\\MyFlutterMobileApp\\MyEbay\\build\\app\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex
