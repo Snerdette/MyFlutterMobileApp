@@ -1,14 +1,12 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 import './products.dart';
 
 class ProductManager extends StatefulWidget {
-
-  final String startingProduct;
-
-  ProductManager({this.startingProduct = 'Sweets Tester'}){
-    print('[ProductManager Widget] Constructor');
-  }
 
   @override
   State<StatefulWidget> createState () {
@@ -20,11 +18,33 @@ class ProductManager extends StatefulWidget {
 class _ProductManagerState extends State<ProductManager>{
 
   List<String> _products = [];
+  List data;
+  String result = "";
+
+  // Missing Authorization to test API call
+  Future<String> getData(String result) async {
+    var response = await http.get(
+        Uri.encodeFull("https://api.sandbox.ebay.com/buy/browse/v1/item_summary/search?q=" + result),
+
+        headers: {
+          "Accept": "application/json",
+          "Authorization": ""
+        });
+
+    this.setState(() {
+      data = json.decode(response.body);
+    });
+
+    // prints the first result's title for debug
+    print(data[0]["title"]);
+
+    return "Success!";
+  }
 
   @override
   void initState() {
-    print('[ProductManager State] initState()');
-    _products.add(widget.startingProduct);
+    // Load Search bar first, then send result to get data
+    getData(result);
     super.initState();
   }
 
@@ -43,12 +63,12 @@ class _ProductManagerState extends State<ProductManager>{
         color: Theme.of(context).primaryColor,
         onPressed: () {
           setState(() {
-            _products.add('Advanced Coding');
+            _products.add('Hard Coding');
             print(_products);
           });
 
         },
-        child: Text('Add Product'),
+        child: Text('Search'),
       ),
     ),
       Products(_products)
