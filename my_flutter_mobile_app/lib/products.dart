@@ -23,4 +23,13 @@ class Products extends StatelessWidget {
             .toList()
     );
   }
+
+  // TODO: create check for URL in product file.
+  _launchURL(String url) async {
+    //if (await canLaunch(url)) {
+      //await launch(url);
+    //} else {
+      //throw 'Could not launch $url';
+    //}
+  }
 }
